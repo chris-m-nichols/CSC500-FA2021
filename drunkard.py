@@ -4,6 +4,9 @@ import turtle
 import random
 import time
 
+
+# change edges to remove unavailable directions
+
 def atLeftEdge(ball, screen_width):
     if ball.xcor() < -screen_width / 2:
         return True
@@ -28,6 +31,7 @@ def atBottomEdge(ball, screen_height):
     else:
         return False
 
+#change to change direction, update with random direction based on instructions
 def bounceBall(ball, new_direction):
     if new_direction == 'left' or new_direction == 'right':
         new_heading = 180 - ball.heading()
@@ -66,6 +70,7 @@ window = turtle.Screen()
 window.title('Bouncing Balls')
 
 # prompt user for execution time and number of balls
+#change to number of moves
 num_seconds = int(input('Enter number of seconds to run: '))
 num_balls = 3
 
@@ -78,6 +83,7 @@ start_time = time.time()
 # begin simulation
 terminate = False
 
+#update with number of moves
 while not terminate:
     for k in range(0,len(balls)):
         balls[k].forward(15)
@@ -93,6 +99,8 @@ while not terminate:
 
         if time.time() - start_time > num_seconds:
             terminate = True
-        
+
+# add equation for distance from start point
+     
 # exit on close window
 turtle.exitonclick()
