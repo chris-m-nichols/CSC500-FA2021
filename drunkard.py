@@ -54,7 +54,7 @@ def createBalls(num_balls):
         balls.append(new_ball)
 
     return balls
-
+#change
 # ---- main
 # program greeting
 print('This program simulates bouncing balls in a turtle screen')
@@ -84,6 +84,7 @@ start_time = time.time()
 terminate = False
 
 #update with number of moves
+#Needs to be setting the direction 
 while not terminate:
     for k in range(0,len(balls)):
         balls[k].forward(15)
