@@ -54,10 +54,10 @@ def createBalls(num_balls):
         balls.append(new_ball)
 
     return balls
-
+#change
 # ---- main
 # program greeting
-print('This program simulates bouncing balls in a turtle screen')
+print('This program simulates drunkards walk in a turtle screen')
 print('for a specified number of seconds.')
 
 # init screen size
@@ -71,19 +71,20 @@ window.title('Bouncing Balls')
 
 # prompt user for execution time and number of balls
 #change to number of moves
-num_seconds = int(input('Enter number of seconds to run: '))
+num_steps = int(input('Enter number of steps to run: '))
 num_balls = 3
 
 # create balls
 balls = createBalls(num_balls)
 
 # set start time
-start_time = time.time()
+#start_time = time.time()
 
 # begin simulation
 terminate = False
 
 #update with number of moves
+#Needs to be setting the direction 
 while not terminate:
     for k in range(0,len(balls)):
         balls[k].forward(15)
