@@ -32,16 +32,12 @@ def atBottomEdge(ball, screen_height):
         return False
 
 #change to change direction, update with random direction based on instructions
-def bounceBall(ball):
+
     
-
-#def bounceBall(ball, new_direction):
-#    if new_direction == 'left' or new_direction == 'right':
-#        new_heading = 180 - ball.heading()
-#    elif new_direction == 'down' or new_direction == 'up':
-#        new_heading =  360 - ball.heading()
-
-#    return new_heading
+    
+    
+    
+#Create Drunkard
 
 def createBalls(num_balls):
     balls = []
