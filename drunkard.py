@@ -32,13 +32,16 @@ def atBottomEdge(ball, screen_height):
         return False
 
 #change to change direction, update with random direction based on instructions
-def bounceBall(ball, new_direction):
-    if new_direction == 'left' or new_direction == 'right':
-        new_heading = 180 - ball.heading()
-    elif new_direction == 'down' or new_direction == 'up':
-        new_heading =  360 - ball.heading()
+def bounceBall(ball):
+    
 
-    return new_heading
+#def bounceBall(ball, new_direction):
+#    if new_direction == 'left' or new_direction == 'right':
+#        new_heading = 180 - ball.heading()
+#    elif new_direction == 'down' or new_direction == 'up':
+#        new_heading =  360 - ball.heading()
+
+#    return new_heading
 
 def createBalls(num_balls):
     balls = []
@@ -58,7 +61,7 @@ def createBalls(num_balls):
 # ---- main
 # program greeting
 print('This program simulates drunkards walk in a turtle screen')
-print('for a specified number of seconds.')
+print('for a specified number of steps.')
 
 # init screen size
 screen_width = 800
@@ -67,9 +70,9 @@ turtle.setup(screen_width,screen_height)
 
 # create turtle window
 window = turtle.Screen()
-window.title('Bouncing Balls')
+window.title('Drunkards Walk')
 
-# prompt user for execution time and number of balls
+# prompt user for number of balls and steps
 #change to number of moves
 num_steps = int(input('Enter number of steps to run: '))
 num_balls = 3
@@ -84,24 +87,15 @@ balls = createBalls(num_balls)
 terminate = False
 
 #update with number of moves
-#Needs to be setting the direction 
-while not terminate:
-    for k in range(0,len(balls)):
-        balls[k].forward(15)
-        
-        if atLeftEdge(balls[k], screen_width):
-            balls[k].setheading(bounceBall(balls[k],'right'))
-        elif atRightEdge(balls[k], screen_width):
-            balls[k].setheading(bounceBall(balls[k],'left'))
-        elif atTopEdge(balls[k], screen_height):
-            balls[k].setheading(bounceBall(balls[k],'down'))
-        elif atBottomEdge(balls[k], screen_height):
-            balls[k].setheading(bounceBall(balls[k],'up'))
 
-        if time.time() - start_time > num_seconds:
-            terminate = True
+#Needs to be setting the direction 
+def make_drunkard_walk(step_size,step_number):
+    for i in range(step_size,step_number):
+        turtle.setheading(90*random.randint(0,3))
+        turtle.forward(step_size)
 
 # add equation for distance from start point
-     
+
+
 # exit on close window
 turtle.exitonclick()
