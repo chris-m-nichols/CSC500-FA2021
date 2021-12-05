@@ -89,9 +89,9 @@ terminate = False
 
 def drunkards_walk(step_size, steps):
     # Assumes turtle.mode('standard')
-    DIRECTIONS = (EAST, NORTH, WEST, SOUTH) = (0, 90, 180, 270)
-    for _ in range(steps):
-        go(random.choice(DIRECTIONS), step_size)
+    DIRECTIONS = (NORTH,NORTHEAST,EAST,SOUTHEAST,SOUTH,SOUTHWEST,WEST,NORTHWEST) = (0,45, 90,135, 180,225, 270)
+    turtle.setheading(random.choice(DIRECTIONS))
+    turtle.forward(step_size)
 
 #def make_drunkard_walk(step_size,step_number):
 #    for i in range(step_size,step_number):
