@@ -20,15 +20,7 @@ class drunkard(Turtle):
         self.startycor = ypos
         self.dist = 0
     
-    def change_position(self, dir, stepSize):
-        self.turtle.setheading(dir)
-        self.turtle.forward(stepSize)
-    
-    def distance(self):
-        x = self.startxcor - self.turtle.xcor
-        y = self.startycor - self.turtle.ycor
-        self.dist = math.sqrt(x**2 + y**2)
-        
+
 
     
 
