@@ -11,15 +11,8 @@ import math
 class drunkard(Turtle):
     def __init__(self, color, speed, xpos, ypos):
         self.turtle = turtle.Turtle()
-        self.turtle.shape('circle')
-        self.turtle.fillcolor(color)
-        self.turtle.speed(speed)
-        self.turtle.setx(xpos)
-        self.startxcor = xpos
-        self.turtle.sety(ypos)
-        self.startycor = ypos
-        self.dist = 0
-    
+        startxcor = 0
+        startycor = 0
 
 
     
@@ -53,7 +46,7 @@ def atBottomEdge(ball, screen_height):
 # Randomize directions
 # change to change direction, update with random direction based on instructions
 
-def change_position(drunk, dir, stepSize):
+def change_position(drunk, stepSize):
     DIRECTIONS = (NORTH,NORTHEAST,EAST,SOUTHEAST,SOUTH,SOUTHWEST,WEST,NORTHWEST) = (0,45, 90,135, 180, 225, 270, 315)
     drunk.turtle.setheading(random.choice(DIRECTIONS))
     drunk.turtle.forward(stepSize)
@@ -88,15 +81,39 @@ window.title('Drunkards Walk')
 #change to number of moves
 num_steps = int(input('Enter number of steps to run: '))
 num_drunks = 3
+stepSize = 10
 
 # create balls
 create = []
 create = createDrunks()
 drunk1 = drunkard(create[0], create[1], create[2], create[3])
+drunk1.turtle.shape('circle')
+drunk1.turtle.fillcolor(create[0])
+drunk1.turtle.speed(create[1])
+drunk1.turtle.setx(create[2])
+drunk1.startxcor = create[2]
+drunk1.turtle.sety(create[3])
+drunk1.startycor = create[3]
+
 create = createDrunks()
 drunk2 = drunkard(create[0], create[1], create[2], create[3])
+drunk2.turtle.shape('circle')
+drunk2.turtle.fillcolor(create[0])
+drunk2.turtle.speed(create[1])
+drunk2.turtle.setx(create[2])
+drunk2.startxcor = create[2]
+drunk2.turtle.sety(create[3])
+drunk2.startycor = create[3]
+
 create = createDrunks()
 drunk3 = drunkard(create[0], create[1], create[2], create[3])
+drunk3.turtle.shape('circle')
+drunk3.turtle.fillcolor(create[0])
+drunk3.turtle.speed(create[1])
+drunk3.turtle.setx(create[2])
+drunk3.startxcor = create[2]
+drunk3.turtle.sety(create[3])
+drunk3.startycor = create[3]
 
 # set start time
 #start_time = time.time()
@@ -106,6 +123,14 @@ terminate = False
 
 #update with number of moves
 print(num_steps)
+for k in range(num_steps):
+    change_position(drunk1, stepSize)
+for k in range(num_steps):
+    change_position(drunk2, stepSize)
+for k in range(num_steps):
+    change_position(drunk3, stepSize)
+
+
 #Needs to be setting the direction 
 
 
@@ -124,9 +149,9 @@ def drunkards_walk(step_size, steps):
 # add equation for distance from start point
 #Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))
 
-print("In", num_steps, "steps Drunk 1 moves", drunk1.dist)
-print("In", num_steps, "steps Drunk 2 moves", drunk2.dist)
-print("In", num_steps, "steps Drunk 3 moves", drunk3.dist)
+print("In", num_steps, "steps Drunk 1 moves", distance(drunk1))
+print("In", num_steps, "steps Drunk 2 moves", distance(drunk2))
+print("In", num_steps, "steps Drunk 3 moves", distance(drunk3))
 
 # exit on close window
 turtle.exitonclick()
