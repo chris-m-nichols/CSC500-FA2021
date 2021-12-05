@@ -118,17 +118,15 @@ createDrunks(num_drunks)
 terminate = False
 
 #update with number of moves
-
+print(num_steps)
 #Needs to be setting the direction 
-
 
 def drunkards_walk(step_size, steps):
     # Assumes turtle.mode('standard')
-    DIRECTIONS = (EAST, NORTH, WEST, SOUTH) = (0, 90, 180, 270)
-    for _ in range(steps):
-        #go(random.choice(DIRECTIONS), step_size)
-        turtle.setheading(DIRECTIONS)
-        turtle.forward(step_size)
+    DIRECTIONS = (NORTH,NORTHEAST,EAST,SOUTHEAST,SOUTH,SOUTHWEST,WEST,NORTHWEST) = (0,45, 90,135, 180,225, 270)
+    turtle.setheading(random.choice(DIRECTIONS))
+    turtle.forward(step_size)
+
 
 #def make_drunkard_walk(step_size,step_number):
 #    for i in range(step_size,step_number):
@@ -136,7 +134,15 @@ def drunkards_walk(step_size, steps):
 #        turtle.forward(step_size)
 
 # add equation for distance from start point
-
+#Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))
+def distance(n):
+    x=0
+    y=0
+    for i in range(n):
+        (dx,dy)=random.choice([(0,1),(1,1),(1,0),(-1,-1),(1,-1),(0,-1)(-1,0)])
+for i in range(num_steps):
+    drunkwalk=distance(n)
+    print(drunkwalk,"Distance from bar = ",abs(drunkwalk[0]+abs(drunkwalk[1])))
 
 # exit on close window
 turtle.exitonclick()
