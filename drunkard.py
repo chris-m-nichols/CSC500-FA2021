@@ -11,8 +11,8 @@ import math
 class drunkard(Turtle):
     def __init__(self, color, speed, xpos, ypos):
         self.turtle = turtle.Turtle()
-        startxcor = 0
-        startycor = 0
+        self.startxcor = 0
+        self.startycor = 0
     
     def set_startxcor(self, xcor):
         self.startxcor = xcor
@@ -65,14 +65,16 @@ def change_position(drunk, stepSize):
 # Calculate Distance
 
 def distance(drunk):
-    x1 = drunk.get_startxcor
-    x2 = drunk.turtle.xcor
-    print(drunk.turtle.xcor)
-    x = int(x1) - int(x2)
-    y1 = drunk.get_startycor
-    y2 = drunk.turtle.ycor
-    y = int(y1) - int(y2)
-    dist = math.sqrt(x**2 + y**2)    
+    dist = drunk.turtle.distance(drunk.get_startxcor(),drunk.get_startycor())
+    #x1 = drunk.get_startxcor
+    #x2 = drunk.turtle.xcor
+    #print(drunk.turtle.position)
+    #print(drunk.turtle.xcor)
+    #x = int(x1) - int(x2)
+    #y1 = drunk.get_startycor
+    #y2 = drunk.turtle.ycor
+    #y = int(y1) - int(y2)
+    #dist = math.sqrt(x**2 + y**2)    
     return dist
     
     
