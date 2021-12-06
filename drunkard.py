@@ -99,7 +99,7 @@ window.title('Drunkards Walk')
 #change to number of moves
 num_steps = int(input('Enter number of steps to run: '))
 num_drunks = 3
-stepSize = 10
+stepSize = 40
 
 # create balls
 create = []
@@ -109,9 +109,9 @@ drunk1.turtle.shape('circle')
 drunk1.turtle.fillcolor(create[0])
 drunk1.turtle.speed(create[1])
 drunk1.turtle.setx(create[2])
-drunk1.set_startxcor = create[2]
+drunk1.set_startxcor(create[2])
 drunk1.turtle.sety(create[3])
-drunk1.set_startycor = create[3]
+drunk1.set_startycor(create[3])
 
 create = createDrunks()
 drunk2 = drunkard(create[0], create[1], create[2], create[3])
@@ -119,9 +119,9 @@ drunk2.turtle.shape('circle')
 drunk2.turtle.fillcolor(create[0])
 drunk2.turtle.speed(create[1])
 drunk2.turtle.setx(create[2])
-drunk2.set_startxcor = create[2]
+drunk2.set_startxcor(create[2])
 drunk2.turtle.sety(create[3])
-drunk2.startycor = create[3]
+drunk2.set_startycor(create[3])
 
 create = createDrunks()
 drunk3 = drunkard(create[0], create[1], create[2], create[3])
@@ -129,9 +129,9 @@ drunk3.turtle.shape('circle')
 drunk3.turtle.fillcolor(create[0])
 drunk3.turtle.speed(create[1])
 drunk3.turtle.setx(create[2])
-drunk3.set_startxcor = create[2]
+drunk3.set_startxcor(create[2])
 drunk3.turtle.sety(create[3])
-drunk3.set_startycor = create[3]
+drunk3.set_startycor(create[3])
 
 # set start time
 #start_time = time.time()
