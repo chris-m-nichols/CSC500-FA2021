@@ -31,25 +31,25 @@ class drunkard(Turtle):
 # change edges to remove unavailable directions
 
 def atLeftEdge(ball, screen_width):
-    if ball.xcor() < -screen_width / 2:
+    if ball.turtle.xcor() < -screen_width / 2:
         return True
     else:
         return False
 
 def atRightEdge(ball, screen_width):
-    if ball.xcor() > screen_width / 2:
+    if ball.turtle.xcor() > screen_width / 2:
         return True
     else:
         return False
 
 def atTopEdge(ball, screen_height):
-    if ball.ycor() > screen_height / 2:
+    if ball.turtle.ycor() > screen_height / 2:
         return True
     else:
         return False
 
 def atBottomEdge(ball, screen_height):
-    if ball.ycor() < -screen_height / 2:
+    if ball.turtle.ycor() < -screen_height / 2:
         return True
     else:
         return False
