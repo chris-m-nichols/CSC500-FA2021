@@ -13,7 +13,18 @@ class drunkard(Turtle):
         self.turtle = turtle.Turtle()
         startxcor = 0
         startycor = 0
+    
+    def set_startxcor(self, xcor):
+        self.startxcor = xcor
 
+    def set_startycor(self, ycor):
+        self.startycor = ycor
+
+    def get_startxcor(self):
+        return self.startxcor
+    
+    def get_startycor(self):
+        return self.startycor
 
     
 
@@ -54,8 +65,13 @@ def change_position(drunk, stepSize):
 # Calculate Distance
 
 def distance(drunk):
-    x = drunk.startxcor - drunk.turtle.xcor
-    y = drunk.startycor - drunk.turtle.ycor
+    x1 = drunk.get_startxcor
+    x2 = drunk.turtle.xcor
+    print(drunk.turtle.xcor)
+    x = int(x1) - int(x2)
+    y1 = drunk.get_startycor
+    y2 = drunk.turtle.ycor
+    y = int(y1) - int(y2)
     dist = math.sqrt(x**2 + y**2)    
     return dist
     
@@ -91,9 +107,9 @@ drunk1.turtle.shape('circle')
 drunk1.turtle.fillcolor(create[0])
 drunk1.turtle.speed(create[1])
 drunk1.turtle.setx(create[2])
-drunk1.startxcor = create[2]
+drunk1.set_startxcor = create[2]
 drunk1.turtle.sety(create[3])
-drunk1.startycor = create[3]
+drunk1.set_startycor = create[3]
 
 create = createDrunks()
 drunk2 = drunkard(create[0], create[1], create[2], create[3])
@@ -101,7 +117,7 @@ drunk2.turtle.shape('circle')
 drunk2.turtle.fillcolor(create[0])
 drunk2.turtle.speed(create[1])
 drunk2.turtle.setx(create[2])
-drunk2.startxcor = create[2]
+drunk2.set_startxcor = create[2]
 drunk2.turtle.sety(create[3])
 drunk2.startycor = create[3]
 
@@ -111,9 +127,9 @@ drunk3.turtle.shape('circle')
 drunk3.turtle.fillcolor(create[0])
 drunk3.turtle.speed(create[1])
 drunk3.turtle.setx(create[2])
-drunk3.startxcor = create[2]
+drunk3.set_startxcor = create[2]
 drunk3.turtle.sety(create[3])
-drunk3.startycor = create[3]
+drunk3.set_startycor = create[3]
 
 # set start time
 #start_time = time.time()
