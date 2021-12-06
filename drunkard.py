@@ -59,19 +59,19 @@ def atBottomEdge(ball, screen_height):
 
 def change_position(drunk, stepSize,width,height):
     DIRECTIONS = [0,45, 90,-135, -180, -225, 270, 315]
-    if atLeftEdge(drunk,width) == True:
+    if atLeftEdge(drunk,width):
         DIRECTIONS.remove(-225) 
         DIRECTIONS.remove(270)
         DIRECTIONS.remove(315)     
-    elif atRightEdge(drunk,width) == True: 
+    elif atRightEdge(drunk,width): 
         DIRECTIONS.remove(0)
         DIRECTIONS.remove(45)
         DIRECTIONS.remove(90)
-    elif atBottomEdge(drunk,height) == True: 
+    elif atBottomEdge(drunk,height): 
         DIRECTIONS.remove(-135)
         DIRECTIONS.remove(-180)
         DIRECTIONS.remove(-225)
-    elif atTopEdge(drunk,height) == True:
+    elif atTopEdge(drunk,height):
         DIRECTIONS.remove(0)
         DIRECTIONS.remove(45)
         DIRECTIONS.remove(315)
@@ -167,22 +167,6 @@ for k in range(num_steps):
     change_position(drunk2, stepSize,screen_width,screen_height)
 for k in range(num_steps):
     change_position(drunk3, stepSize,screen_width,screen_height)
-
-
-#Needs to be setting the direction 
-
-
-def drunkards_walk(step_size, steps):
-    # Assumes turtle.mode('standard')
-    DIRECTIONS = (NORTH,NORTHEAST,EAST,SOUTHEAST,SOUTH,SOUTHWEST,WEST,NORTHWEST) = (0,45, 90,135, 180, 225, 270, 315)
-    turtle.setheading(random.choice(DIRECTIONS))
-    turtle.forward(step_size)
-
-
-#def make_drunkard_walk(step_size,step_number):
-#    for i in range(step_size,step_number):
-#        turtle.setheading(90*random.randint(0,3))
-#        turtle.forward(step_size)
 
 # add equation for distance from start point
 #Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))
