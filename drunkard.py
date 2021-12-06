@@ -58,9 +58,9 @@ def atBottomEdge(ball, screen_height):
 # change to change direction, update with random direction based on instructions
 
 def change_position(drunk, stepSize,width,height):
-    DIRECTIONS = [0,45, 90,-135, -180, -225, 270, 315]
+    DIRECTIONS = [0,45, 90, 135, 180, 225, 270, 315]
     if atLeftEdge(drunk,width):
-        DIRECTIONS.remove(-225) 
+        DIRECTIONS.remove(225) 
         DIRECTIONS.remove(270)
         DIRECTIONS.remove(315)     
     elif atRightEdge(drunk,width): 
@@ -68,9 +68,9 @@ def change_position(drunk, stepSize,width,height):
         DIRECTIONS.remove(45)
         DIRECTIONS.remove(90)
     elif atBottomEdge(drunk,height): 
-        DIRECTIONS.remove(-135)
-        DIRECTIONS.remove(-180)
-        DIRECTIONS.remove(-225)
+        DIRECTIONS.remove(135)
+        DIRECTIONS.remove(180)
+        DIRECTIONS.remove(225)
     elif atTopEdge(drunk,height):
         DIRECTIONS.remove(0)
         DIRECTIONS.remove(45)
@@ -119,7 +119,7 @@ window.title('Drunkards Walk')
 #change to number of moves
 num_steps = int(input('Enter number of steps to run: '))
 num_drunks = 3
-stepSize = 40
+stepSize = 10
 
 # create balls
 create = []
