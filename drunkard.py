@@ -30,26 +30,26 @@ class drunkard(Turtle):
 
 # change edges to remove unavailable directions
 
-def atLeftEdge(ball, screen_width):
-    if ball.turtle.xcor() < -screen_width / 2:
+def atLeftEdge(drunk, screen_width):
+    if drunk.turtle.xcor() < -screen_width / 2:
         return True
     else:
         return False
 
-def atRightEdge(ball, screen_width):
-    if ball.turtle.xcor() > screen_width / 2:
+def atRightEdge(drunk, screen_width):
+    if drunk.turtle.xcor() > screen_width / 2:
         return True
     else:
         return False
 
-def atTopEdge(ball, screen_height):
-    if ball.turtle.ycor() > screen_height / 2:
+def atTopEdge(drunk, screen_height):
+    if drunk.turtle.ycor() > screen_height / 2:
         return True
     else:
         return False
 
-def atBottomEdge(ball, screen_height):
-    if ball.turtle.ycor() < -screen_height / 2:
+def atBottomEdge(drunk, screen_height):
+    if drunk.turtle.ycor() < -screen_height / 2:
         return True
     else:
         return False
@@ -107,8 +107,8 @@ print('This program simulates drunkards walk in a turtle screen')
 print('for a specified number of steps.')
 
 # init screen size
-screen_width = 800
-screen_height = 600
+screen_width = 1000
+screen_height = 800
 turtle.setup(screen_width,screen_height)
 
 # create turtle window
