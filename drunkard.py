@@ -60,21 +60,21 @@ def atBottomEdge(ball, screen_height):
 def change_position(drunk, stepSize,width,height):
     DIRECTIONS = [NORTH,NORTHEAST,EAST,SOUTHEAST,SOUTH,SOUTHWEST,WEST,NORTHWEST] = [0,45, 90,135, 180, 225, 270, 315]
     if atLeftEdge(drunk,width) == True:
-        for k in DIRECTIONS:
-            if DIRECTIONS[k] == "NORTHWEST"or"WEST"or"SOUTHWEST":
-                [0,45, 90,135, 180]                
+        DIRECTIONS.remove(225) 
+        DIRECTIONS.remove(270)
+        DIRECTIONS.remove(315)     
     elif atRightEdge(drunk,width) == True: 
-                for k in DIRECTIONS:
-                    if DIRECTIONS[k] == "NORTH"or"NORTHEAST"or"EAST":
-                        [135, 180, 225, 270, 315]
-    elif atBottomEdge(drunk,height): 
-                for k in DIRECTIONS:
-                    if DIRECTIONS[k] == "SOUTHEAST"or"SOUTH"or"SOUTHWEST":
-                        [0,45, 90, 270, 315]     
-    elif atTopEdge(drunk,height):
-                for k in DIRECTIONS:
-                    if DIRECTIONS[k] == "NORTH"or"NORTHEAST"or"NORTHWEST":
-                        [90,135, 180, 225, 270]
+        DIRECTIONS.remove(0)
+        DIRECTIONS.remove(45)
+        DIRECTIONS.remove(90)
+    elif atBottomEdge(drunk,height) == True: 
+        DIRECTIONS.remove(135)
+        DIRECTIONS.remove(180)
+        DIRECTIONS.remove(225)
+    elif atTopEdge(drunk,height) == True:
+        DIRECTIONS.remove(0)
+        DIRECTIONS.remove(45)
+        DIRECTIONS.remove(315)
 
     drunk.turtle.setheading(random.choice(DIRECTIONS))
     drunk.turtle.forward(stepSize)
