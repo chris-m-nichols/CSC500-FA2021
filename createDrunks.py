@@ -5,7 +5,7 @@ def createDrunks():
     xcords = [-40, 0, 40]
     ycords = [-40, 0, 40]
     ballColor = random.choice(colorList)
-    speed = 5
+    speed = 0
     xcord = random.choice(xcords)
     ycord = random.choice(ycords)
     return [ballColor, speed, xcord, ycord]
