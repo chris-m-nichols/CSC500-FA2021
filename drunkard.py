@@ -1,7 +1,7 @@
 # Bouncing Balls Simulation Program
 
 import turtle
-from turtle import Turtle, Screen
+from turtle import Turtle, Screen, width
 import random
 from createDrunks import createDrunks
 import math
@@ -57,10 +57,20 @@ def atBottomEdge(ball, screen_height):
 # Randomize directions
 # change to change direction, update with random direction based on instructions
 
-def change_position(drunk, stepSize):
-    DIRECTIONS = (NORTH,NORTHEAST,EAST,SOUTHEAST,SOUTH,SOUTHWEST,WEST,NORTHWEST) = (0,45, 90,135, 180, 225, 270, 315)
+def change_position(drunk, stepSize,width,height):
+    DIRECTIONS = [NORTH,NORTHEAST,EAST,SOUTHEAST,SOUTH,SOUTHWEST,WEST,NORTHWEST] = [0,45, 90,135, 180, 225, 270, 315]
+    if atLeftEdge(drunk,width) == True:
+        DIRECTIONS = [NORTH,NORTHEAST,EAST,SOUTHEAST,SOUTH] = [0,45, 90,135, 180]
+    elif atRightEdge(drunk,width) == True: 
+        DIRECTIONS = [SOUTHEAST,SOUTH,SOUTHWEST,WEST,NORTHWEST] = [135, 180, 225, 270, 315]
+    elif atBottomEdge(drunk,height): 
+        DIRECTIONS = [NORTH,NORTHEAST,EAST,WEST,NORTHWEST] = [0,45, 90, 270, 315]     
+    elif atTopEdge(drunk,height):
+        DIRECTIONS = [EAST,SOUTHEAST,SOUTH,SOUTHWEST,WEST] = [90,135, 180, 225, 270]
+
     drunk.turtle.setheading(random.choice(DIRECTIONS))
     drunk.turtle.forward(stepSize)
+
 
 # Calculate Distance
 
@@ -142,11 +152,11 @@ terminate = False
 #update with number of moves
 print(num_steps)
 for k in range(num_steps):
-    change_position(drunk1, stepSize)
+    change_position(drunk1, stepSize,screen_width,screen_height)
 for k in range(num_steps):
-    change_position(drunk2, stepSize)
+    change_position(drunk2, stepSize,screen_width,screen_height)
 for k in range(num_steps):
-    change_position(drunk3, stepSize)
+    change_position(drunk3, stepSize,screen_width,screen_height)
 
 
 #Needs to be setting the direction 
