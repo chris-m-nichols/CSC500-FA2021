@@ -95,11 +95,14 @@ def change_position(drunk, stepSize ,width,height):
             DIRECTIONS.remove(270)
             DIRECTIONS.remove(315)     
     if atRightEdge(drunk,width): 
-            DIRECTIONS.remove(0)
             DIRECTIONS.remove(45)
             DIRECTIONS.remove(90)
+            DIRECTIONS.remove(135)
     if atBottomEdge(drunk,height): 
-        DIRECTIONS.remove(135)
+        try:
+            DIRECTIONS.remove(135)
+        except:
+            pass
         DIRECTIONS.remove(180)
         try:
             DIRECTIONS.remove(225)
@@ -156,6 +159,9 @@ print('for a specified number of steps.')
 screen_width = 600
 screen_height = 400
 turtle.setup(screen_width,screen_height)
+
+# Set angle orientation
+turtle.mode("logo")
 
 # create turtle window
 window = turtle.Screen()
