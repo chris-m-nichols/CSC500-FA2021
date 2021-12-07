@@ -231,7 +231,7 @@ distanceView = "In " + str(num_steps) + " steps Drunk 1 moves " + str(round(dist
 drunk = 2
 distanceView = distanceView + "In " + str(num_steps) + " steps Drunk 2 moves " + str(round(distance(drunk), 4)) + " pixels.\n"
 drunk = 3
-distanceView = distanceView + "In " + str(num_steps) + " steps Drunk 3 moves " + str(round(distance(drunk), 4)) + " pixels.\n Enter 0 to close"
+distanceView = distanceView + "In " + str(num_steps) + " steps Drunk 3 moves " + str(round(distance(drunk), 4)) + " pixels.\nEnter 0 to close"
 
 # Exit on no input
 close = turtle.textinput("Distance", distanceView)
