@@ -151,9 +151,6 @@ def distance(drunk):
 #Create Drunkards
 #change
 # ---- main
-# program greeting
-print('This program simulates drunkards walk in a turtle screen')
-print('for a specified number of steps.')
 
 # init screen size
 screen_width = 600
