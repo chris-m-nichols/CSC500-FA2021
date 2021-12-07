@@ -1,4 +1,9 @@
-# Bouncing Balls Simulation Program
+# Drunkard's Walk Simulation Program
+
+# David Boyd
+# Chris Nichols
+# Grace Smith
+# Hallie Vanderhoof
 
 import turtle
 import random
