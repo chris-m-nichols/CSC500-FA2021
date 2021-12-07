@@ -139,14 +139,11 @@ def change_position(drunk, stepSize ,width,height):
 
 def distance(drunk):
     if drunk == 1:
-        dist = math.sqrt((drunk1.get_startxcor() - drunk1.turtle.xcor()) ** 2 + (drunk1.get_startycor() - drunk1.turtle.ycor()) ** 2)
-        #dist = drunk1.turtle.distance(drunk1.get_startxcor(),drunk1.get_startycor())   
+        dist = math.sqrt((drunk1.get_startxcor() - drunk1.turtle.xcor()) ** 2 + (drunk1.get_startycor() - drunk1.turtle.ycor()) ** 2)   
     elif drunk == 2:
         dist = math.sqrt((drunk2.get_startxcor() - drunk2.turtle.xcor()) ** 2 + (drunk2.get_startycor() - drunk2.turtle.ycor()) ** 2)
-        #dist = drunk2.turtle.distance(drunk2.get_startxcor(),drunk2.get_startycor())
     elif drunk == 3:
         dist = math.sqrt((drunk3.get_startxcor() - drunk3.turtle.xcor()) ** 2 + (drunk3.get_startycor() - drunk3.turtle.ycor()) ** 2)
-        #dist = drunk3.turtle.distance(drunk3.get_startxcor(),drunk3.get_startycor())
     return dist
     
     
@@ -154,9 +151,6 @@ def distance(drunk):
 #Create Drunkards
 #change
 # ---- main
-# program greeting
-print('This program simulates drunkards walk in a turtle screen')
-print('for a specified number of steps.')
 
 # init screen size
 screen_width = 600
@@ -172,7 +166,7 @@ window.title('Drunkards Walk')
 
 # prompt user for number of balls and steps
 #change to number of moves
-num_steps = int(input('Enter number of steps to run: '))
+num_steps = int(turtle.textinput('Enter number of steps to run: ', "This program simulates drunkards walk in a turtle screen\nfor a specified number of steps.\n\nNumber of steps:"))
 num_drunks = 3
 stepSize = 40
 
@@ -180,9 +174,10 @@ stepSize = 40
 create = []
 create = createDrunks(screen_width, screen_height)
 drunk1 = drunkard(create[0], create[1], create[2], create[3])
-drunk1.turtle.shape('circle')
+drunk1.turtle.shape(create[4])
 drunk1.turtle.fillcolor(create[0])
 drunk1.turtle.speed(create[1])
+drunk1.turtle.pencolor(create[5])
 turtle.penup()
 drunk1.turtle.setx(create[2])
 drunk1.set_startxcor(create[2])
@@ -192,9 +187,10 @@ turtle.pendown()
 
 create = createDrunks(screen_width, screen_height)
 drunk2 = drunkard(create[0], create[1], create[2], create[3])
-drunk2.turtle.shape('circle')
+drunk2.turtle.shape(create[4])
 drunk2.turtle.fillcolor(create[0])
 drunk2.turtle.speed(create[1])
+drunk2.turtle.pencolor(create[5])
 turtle.penup()
 drunk2.turtle.setx(create[2])
 drunk2.set_startxcor(create[2])
@@ -204,9 +200,10 @@ turtle.pendown()
 
 create = createDrunks(screen_width, screen_height)
 drunk3 = drunkard(create[0], create[1], create[2], create[3])
-drunk3.turtle.shape('circle')
+drunk3.turtle.shape(create[4])
 drunk3.turtle.fillcolor(create[0])
 drunk3.turtle.speed(create[1])
+drunk3.turtle.pencolor(create[5])
 turtle.penup
 drunk3.turtle.setx(create[2])
 drunk3.set_startxcor(create[2])
@@ -218,7 +215,6 @@ turtle.pendown
 terminate = False
 
 #update with number of moves
-print(num_steps)
 for k in range(num_steps):
     drunk = 1
     change_position(drunk, stepSize,screen_width,screen_height)
@@ -231,11 +227,25 @@ for k in range(num_steps):
 #Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))
 
 drunk = 1
-print("In", num_steps, "steps Drunk 1 moves", distance(drunk), "pixels.")
+distanceView = "In " + str(num_steps) + " steps Drunk 1 moves " + str(round(distance(drunk), 4)) + " pixels.\n"
 drunk = 2
-print("In", num_steps, "steps Drunk 2 moves", distance(drunk), "pixels.")
+distanceView = distanceView + "In " + str(num_steps) + " steps Drunk 2 moves " + str(round(distance(drunk), 4)) + " pixels.\n"
 drunk = 3
-print("In", num_steps, "steps Drunk 3 moves", distance(drunk), "pixels.")
+distanceView = distanceView + "In " + str(num_steps) + " steps Drunk 3 moves " + str(round(distance(drunk), 4)) + " pixels.\nEnter 0 to close"
+
+# Exit on no input
+close = turtle.textinput("Distance", distanceView)
+distanceView = distanceView + "\nInvalid response, please enter 0 to close."
+try:
+    close = int(close)
+except:
+    while close != 0:
+        try:
+            close = int(turtle.textinput("Distance", distanceView))
+        except:
+            pass
+if close == 0:
+    turtle.bye()
 
 # exit on close window
 turtle.exitonclick()
