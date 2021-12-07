@@ -236,11 +236,14 @@ distanceView = distanceView + "In " + str(num_steps) + " steps Drunk 3 moves " +
 # Exit on no input
 close = turtle.textinput("Distance", distanceView)
 distanceView = distanceView + "\nInvalid response, please enter 0 to close."
-while close != 0:
-    try:
-        close = int(turtle.textinput("Distance", distanceView))
-    except:
-        pass
+try:
+    close = int(close)
+except:
+    while close != 0:
+        try:
+            close = int(turtle.textinput("Distance", distanceView))
+        except:
+            pass
 if close == 0:
     turtle.bye()
 
