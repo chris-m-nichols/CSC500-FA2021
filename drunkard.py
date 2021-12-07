@@ -139,14 +139,11 @@ def change_position(drunk, stepSize ,width,height):
 
 def distance(drunk):
     if drunk == 1:
-        dist = math.sqrt((drunk1.get_startxcor() - drunk1.turtle.xcor()) ** 2 + (drunk1.get_startycor() - drunk1.turtle.ycor()) ** 2)
-        #dist = drunk1.turtle.distance(drunk1.get_startxcor(),drunk1.get_startycor())   
+        dist = math.sqrt((drunk1.get_startxcor() - drunk1.turtle.xcor()) ** 2 + (drunk1.get_startycor() - drunk1.turtle.ycor()) ** 2)   
     elif drunk == 2:
         dist = math.sqrt((drunk2.get_startxcor() - drunk2.turtle.xcor()) ** 2 + (drunk2.get_startycor() - drunk2.turtle.ycor()) ** 2)
-        #dist = drunk2.turtle.distance(drunk2.get_startxcor(),drunk2.get_startycor())
     elif drunk == 3:
         dist = math.sqrt((drunk3.get_startxcor() - drunk3.turtle.xcor()) ** 2 + (drunk3.get_startycor() - drunk3.turtle.ycor()) ** 2)
-        #dist = drunk3.turtle.distance(drunk3.get_startxcor(),drunk3.get_startycor())
     return dist
     
     
