@@ -169,7 +169,7 @@ window.title('Drunkards Walk')
 
 # prompt user for number of balls and steps
 #change to number of moves
-num_steps = int(turtle.textinput('This program simulates drunkards walk in a turtle screen\nfor a specified number of steps.\n\nEnter number of steps to run: ', "Number of steps:"))
+num_steps = int(turtle.textinput('Enter number of steps to run: ', "This program simulates drunkards walk in a turtle screen\nfor a specified number of steps.\n\nNumber of steps:"))
 num_drunks = 3
 stepSize = 40
 
