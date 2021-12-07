@@ -3,6 +3,7 @@
 import turtle
 import random
 from createDrunks import createDrunks
+import math
 
 # Drunkard class
 
@@ -138,11 +139,14 @@ def change_position(drunk, stepSize ,width,height):
 
 def distance(drunk):
     if drunk == 1:
-        dist = drunk1.turtle.distance(drunk1.get_startxcor(),drunk1.get_startycor())   
+        dist = math.sqrt((drunk1.get_startxcor() - drunk1.turtle.xcor()) ** 2 + (drunk1.get_startycor() - drunk1.turtle.ycor()) ** 2)
+        #dist = drunk1.turtle.distance(drunk1.get_startxcor(),drunk1.get_startycor())   
     elif drunk == 2:
-        dist = drunk2.turtle.distance(drunk2.get_startxcor(),drunk2.get_startycor())
+        dist = math.sqrt((drunk2.get_startxcor() - drunk2.turtle.xcor()) ** 2 + (drunk2.get_startycor() - drunk2.turtle.ycor()) ** 2)
+        #dist = drunk2.turtle.distance(drunk2.get_startxcor(),drunk2.get_startycor())
     elif drunk == 3:
-        dist = drunk3.turtle.distance(drunk3.get_startxcor(),drunk3.get_startycor())
+        dist = math.sqrt((drunk3.get_startxcor() - drunk3.turtle.xcor()) ** 2 + (drunk3.get_startycor() - drunk3.turtle.ycor()) ** 2)
+        #dist = drunk3.turtle.distance(drunk3.get_startxcor(),drunk3.get_startycor())
     return dist
     
     
@@ -174,7 +178,7 @@ stepSize = 40
 
 # create balls
 create = []
-create = createDrunks()
+create = createDrunks(screen_width, screen_height)
 drunk1 = drunkard(create[0], create[1], create[2], create[3])
 drunk1.turtle.shape('circle')
 drunk1.turtle.fillcolor(create[0])
