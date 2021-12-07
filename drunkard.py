@@ -1,10 +1,9 @@
 # Bouncing Balls Simulation Program
 
 import turtle
-from turtle import Turtle, Screen, width
+from turtle import Turtle
 import random
 from createDrunks import createDrunks
-import math
 
 # Drunkard class
 
@@ -85,16 +84,7 @@ def change_position(drunk, stepSize,width,height):
 # Calculate Distance
 
 def distance(drunk):
-    dist = drunk.turtle.distance(drunk.get_startxcor(),drunk.get_startycor())
-    #x1 = drunk.get_startxcor
-    #x2 = drunk.turtle.xcor
-    #print(drunk.turtle.position)
-    #print(drunk.turtle.xcor)
-    #x = int(x1) - int(x2)
-    #y1 = drunk.get_startycor
-    #y2 = drunk.turtle.ycor
-    #y = int(y1) - int(y2)
-    #dist = math.sqrt(x**2 + y**2)    
+    dist = drunk.turtle.distance(drunk.get_startxcor(),drunk.get_startycor())   
     return dist
     
     
