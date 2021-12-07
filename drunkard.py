@@ -215,7 +215,6 @@ turtle.pendown
 terminate = False
 
 #update with number of moves
-print(num_steps)
 for k in range(num_steps):
     drunk = 1
     change_position(drunk, stepSize,screen_width,screen_height)
@@ -235,7 +234,13 @@ drunk = 3
 distanceView = distanceView + "In " + str(num_steps) + " steps Drunk 3 moves " + str(round(distance(drunk), 4)) + " pixels.\n Enter 0 to close"
 
 # Exit on no input
-close = int(turtle.textinput("Distance", distanceView))
+close = turtle.textinput("Distance", distanceView)
+distanceView = distanceView + "\nInvalid response, please enter 0 to close."
+while close != 0:
+    try:
+        close = int(turtle.textinput("Distance", distanceView))
+    except:
+        pass
 if close == 0:
     turtle.bye()
 
