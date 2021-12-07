@@ -38,7 +38,8 @@ class drunkard(turtle.Turtle):
 # change edges to remove unavailable directions
 
 def atLeftEdge(drunk, screen_width):
-    if drunk.get_xCor() < -screen_width / 2:
+    xcor = abs(drunk.get_xCor()) + stepSize
+    if abs(xcor) > (screen_width / 2):
         print(drunk.get_xCor())
         return True
     else:
@@ -46,19 +47,24 @@ def atLeftEdge(drunk, screen_width):
         return False
 
 def atRightEdge(drunk, screen_width):
-    if drunk.get_xCor() > screen_width / 2:
+    xcor = abs(drunk.get_xCor()) + stepSize
+    if abs(xcor) > (screen_width / 2):
         return True
     else:
         return False
 
 def atTopEdge(drunk, screen_height):
-    if drunk.get_xCor() > screen_height / 2:
+    ycor = abs(drunk.get_yCor()) + stepSize
+    if abs(ycor) > (screen_height / 2):
+        print(ycor)
         return True
     else:
+        print(ycor)
         return False
 
 def atBottomEdge(drunk, screen_height):
-    if drunk.get_yCor() < -screen_height / 2:
+    ycor = abs(drunk.get_yCor()) + stepSize
+    if abs(ycor) > (screen_height / 2):
         return True
     else:
         return False
@@ -107,8 +113,8 @@ print('This program simulates drunkards walk in a turtle screen')
 print('for a specified number of steps.')
 
 # init screen size
-screen_width = 1000
-screen_height = 800
+screen_width = 600
+screen_height = 400
 turtle.setup(screen_width,screen_height)
 
 # create turtle window
@@ -153,9 +159,6 @@ drunk3.set_startxcor(create[2])
 drunk3.turtle.sety(create[3])
 drunk3.set_startycor(create[3])
 
-# set start time
-#start_time = time.time()
-
 # begin simulation
 terminate = False
 
@@ -163,17 +166,15 @@ terminate = False
 print(num_steps)
 for k in range(num_steps):
     change_position(drunk1, stepSize,screen_width,screen_height)
-for k in range(num_steps):
     change_position(drunk2, stepSize,screen_width,screen_height)
-for k in range(num_steps):
     change_position(drunk3, stepSize,screen_width,screen_height)
 
 # add equation for distance from start point
 #Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))
 
-print("In", num_steps, "steps Drunk 1 moves", distance(drunk1))
-print("In", num_steps, "steps Drunk 2 moves", distance(drunk2))
-print("In", num_steps, "steps Drunk 3 moves", distance(drunk3))
+print("In", num_steps, "steps Drunk 1 moves", distance(drunk1), "pixels.")
+print("In", num_steps, "steps Drunk 2 moves", distance(drunk2), "pixels.")
+print("In", num_steps, "steps Drunk 3 moves", distance(drunk3), "pixels.")
 
 # exit on close window
 turtle.exitonclick()
