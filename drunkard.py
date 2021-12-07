@@ -1,17 +1,25 @@
 # Bouncing Balls Simulation Program
 
 import turtle
-from turtle import Turtle
 import random
 from createDrunks import createDrunks
 
 # Drunkard class
 
-class drunkard(Turtle):
+class drunkard(turtle.Turtle):
     def __init__(self, color, speed, xpos, ypos):
-        self.turtle = turtle.Turtle()
+        self.createTurtle()
         self.startxcor = 0
         self.startycor = 0
+
+    def createTurtle(self):
+        self.turtle = turtle.Turtle()
+
+    def get_xCor(self):
+        return self.turtle.xcor()
+
+    def get_yCor(self):
+        return self.turtle.ycor()
     
     def set_startxcor(self, xcor):
         self.startxcor = xcor
@@ -30,25 +38,27 @@ class drunkard(Turtle):
 # change edges to remove unavailable directions
 
 def atLeftEdge(drunk, screen_width):
-    if drunk.turtle.xcor() < -screen_width / 2:
+    if drunk.get_xCor() < -screen_width / 2:
+        print(drunk.get_xCor())
         return True
     else:
+        print(drunk.get_xCor())
         return False
 
 def atRightEdge(drunk, screen_width):
-    if drunk.turtle.xcor() > screen_width / 2:
+    if drunk.get_xCor() > screen_width / 2:
         return True
     else:
         return False
 
 def atTopEdge(drunk, screen_height):
-    if drunk.turtle.ycor() > screen_height / 2:
+    if drunk.get_xCor() > screen_height / 2:
         return True
     else:
         return False
 
 def atBottomEdge(drunk, screen_height):
-    if drunk.turtle.ycor() < -screen_height / 2:
+    if drunk.get_yCor() < -screen_height / 2:
         return True
     else:
         return False
@@ -109,7 +119,7 @@ window.title('Drunkards Walk')
 #change to number of moves
 num_steps = int(input('Enter number of steps to run: '))
 num_drunks = 3
-stepSize = 10
+stepSize = 40
 
 # create balls
 create = []
