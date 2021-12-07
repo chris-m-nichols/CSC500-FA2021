@@ -121,7 +121,6 @@ def change_position(drunk, stepSize ,width,height):
             DIRECTIONS.remove(315)
         except:
             pass
-    print(DIRECTIONS)
     if drunk == 1:
         drunk1.turtle.setheading(random.choice(DIRECTIONS))
         drunk1.turtle.forward(stepSize)
