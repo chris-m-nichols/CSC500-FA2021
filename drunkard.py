@@ -38,33 +38,49 @@ class drunkard(turtle.Turtle):
 # change edges to remove unavailable directions
 
 def atLeftEdge(drunk, screen_width):
-    xcor = abs(drunk.get_xCor()) + stepSize
-    if abs(xcor) > (screen_width / 2):
-        print(drunk.get_xCor())
+    if drunk == 1:
+        xcor = drunk1.get_xCor() - stepSize
+    elif drunk == 2:
+        xcor = drunk2.get_xCor() - stepSize
+    elif drunk == 3:
+        xcor = drunk3.get_xCor() - stepSize
+    if xcor < -(screen_width / 2):
         return True
     else:
-        print(drunk.get_xCor())
         return False
 
 def atRightEdge(drunk, screen_width):
-    xcor = abs(drunk.get_xCor()) + stepSize
-    if abs(xcor) > (screen_width / 2):
+    if drunk == 1:
+        xcor = drunk1.get_xCor() + stepSize
+    elif drunk == 2:
+        xcor = drunk2.get_xCor() + stepSize
+    elif drunk == 3:
+        xcor = drunk3.get_xCor() + stepSize
+    if xcor > (screen_width / 2):
         return True
     else:
         return False
 
 def atTopEdge(drunk, screen_height):
-    ycor = abs(drunk.get_yCor()) + stepSize
-    if abs(ycor) > (screen_height / 2):
-        print(ycor)
+    if drunk == 1:
+        ycor = drunk1.get_yCor() + stepSize
+    elif drunk == 2:
+        ycor = drunk2.get_yCor() + stepSize
+    elif drunk == 3:
+        ycor = drunk3.get_yCor() + stepSize
+    if ycor > (screen_height / 2):
         return True
     else:
-        print(ycor)
         return False
 
 def atBottomEdge(drunk, screen_height):
-    ycor = abs(drunk.get_yCor()) + stepSize
-    if abs(ycor) > (screen_height / 2):
+    if drunk == 1:
+        ycor = drunk1.get_yCor() - stepSize
+    elif drunk == 2:
+        ycor = drunk2.get_yCor() - stepSize
+    elif drunk == 3:
+        ycor = drunk3.get_yCor() - stepSize
+    if ycor < -(screen_height / 2):
         return True
     else:
         return False
@@ -72,27 +88,46 @@ def atBottomEdge(drunk, screen_height):
 # Randomize directions
 # change to change direction, update with random direction based on instructions
 
-def change_position(drunk, stepSize,width,height):
+def change_position(drunk, stepSize ,width,height):
     DIRECTIONS = [0,45, 90, 135, 180, 225, 270, 315]
     if atLeftEdge(drunk,width):
-        DIRECTIONS.remove(225) 
-        DIRECTIONS.remove(270)
-        DIRECTIONS.remove(315)     
-    elif atRightEdge(drunk,width): 
-        DIRECTIONS.remove(0)
-        DIRECTIONS.remove(45)
-        DIRECTIONS.remove(90)
-    elif atBottomEdge(drunk,height): 
+            DIRECTIONS.remove(225) 
+            DIRECTIONS.remove(270)
+            DIRECTIONS.remove(315)     
+    if atRightEdge(drunk,width): 
+            DIRECTIONS.remove(0)
+            DIRECTIONS.remove(45)
+            DIRECTIONS.remove(90)
+    if atBottomEdge(drunk,height): 
         DIRECTIONS.remove(135)
         DIRECTIONS.remove(180)
-        DIRECTIONS.remove(225)
-    elif atTopEdge(drunk,height):
-        DIRECTIONS.remove(0)
-        DIRECTIONS.remove(45)
-        DIRECTIONS.remove(315)
-
-    drunk.turtle.setheading(random.choice(DIRECTIONS))
-    drunk.turtle.forward(stepSize)
+        try:
+            DIRECTIONS.remove(225)
+        except:
+            pass
+    if atTopEdge(drunk,height):
+        try:
+            DIRECTIONS.remove(0)
+        except:
+            pass
+        try:
+            DIRECTIONS.remove(45)
+        except:
+            pass
+        try:
+            DIRECTIONS.remove(315)
+        except:
+            pass
+    print(DIRECTIONS)
+    if drunk == 1:
+        drunk1.turtle.setheading(random.choice(DIRECTIONS))
+        drunk1.turtle.forward(stepSize)
+    elif drunk == 2:
+        drunk2.turtle.setheading(random.choice(DIRECTIONS))
+        drunk2.turtle.forward(stepSize)
+    elif drunk == 3:
+        drunk3.turtle.setheading(random.choice(DIRECTIONS))
+        drunk3.turtle.forward(stepSize)
 
 
         
@@ -100,7 +135,12 @@ def change_position(drunk, stepSize,width,height):
 # Calculate Distance
 
 def distance(drunk):
-    dist = drunk.turtle.distance(drunk.get_startxcor(),drunk.get_startycor())   
+    if drunk == 1:
+        dist = drunk1.turtle.distance(drunk1.get_startxcor(),drunk1.get_startycor())   
+    elif drunk == 2:
+        dist = drunk2.turtle.distance(drunk2.get_startxcor(),drunk2.get_startycor())
+    elif drunk == 3:
+        dist = drunk3.turtle.distance(drunk3.get_startxcor(),drunk3.get_startycor())
     return dist
     
     
@@ -165,16 +205,22 @@ terminate = False
 #update with number of moves
 print(num_steps)
 for k in range(num_steps):
-    change_position(drunk1, stepSize,screen_width,screen_height)
-    change_position(drunk2, stepSize,screen_width,screen_height)
-    change_position(drunk3, stepSize,screen_width,screen_height)
+    drunk = 1
+    change_position(drunk, stepSize,screen_width,screen_height)
+    drunk = 2
+    change_position(drunk, stepSize,screen_width,screen_height)
+    drunk = 3
+    change_position(drunk, stepSize,screen_width,screen_height)
 
 # add equation for distance from start point
 #Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))
 
-print("In", num_steps, "steps Drunk 1 moves", distance(drunk1), "pixels.")
-print("In", num_steps, "steps Drunk 2 moves", distance(drunk2), "pixels.")
-print("In", num_steps, "steps Drunk 3 moves", distance(drunk3), "pixels.")
+drunk = 1
+print("In", num_steps, "steps Drunk 1 moves", distance(drunk), "pixels.")
+drunk = 2
+print("In", num_steps, "steps Drunk 2 moves", distance(drunk), "pixels.")
+drunk = 3
+print("In", num_steps, "steps Drunk 3 moves", distance(drunk), "pixels.")
 
 # exit on close window
 turtle.exitonclick()
