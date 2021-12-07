@@ -1,18 +1,25 @@
 # Bouncing Balls Simulation Program
 
 import turtle
-from turtle import Turtle, Screen, width
 import random
 from createDrunks import createDrunks
-import math
 
 # Drunkard class
 
-class drunkard(Turtle):
+class drunkard(turtle.Turtle):
     def __init__(self, color, speed, xpos, ypos):
-        self.turtle = turtle.Turtle()
+        self.createTurtle()
         self.startxcor = 0
         self.startycor = 0
+
+    def createTurtle(self):
+        self.turtle = turtle.Turtle()
+
+    def get_xCor(self):
+        return self.turtle.xcor()
+
+    def get_yCor(self):
+        return self.turtle.ycor()
     
     def set_startxcor(self, xcor):
         self.startxcor = xcor
@@ -31,25 +38,49 @@ class drunkard(Turtle):
 # change edges to remove unavailable directions
 
 def atLeftEdge(drunk, screen_width):
-    if drunk.turtle.xcor() < -screen_width / 2:
+    if drunk == 1:
+        xcor = drunk1.get_xCor() - stepSize
+    elif drunk == 2:
+        xcor = drunk2.get_xCor() - stepSize
+    elif drunk == 3:
+        xcor = drunk3.get_xCor() - stepSize
+    if xcor < -(screen_width / 2):
         return True
     else:
         return False
 
 def atRightEdge(drunk, screen_width):
-    if drunk.turtle.xcor() > screen_width / 2:
+    if drunk == 1:
+        xcor = drunk1.get_xCor() + stepSize
+    elif drunk == 2:
+        xcor = drunk2.get_xCor() + stepSize
+    elif drunk == 3:
+        xcor = drunk3.get_xCor() + stepSize
+    if xcor > (screen_width / 2):
         return True
     else:
         return False
 
 def atTopEdge(drunk, screen_height):
-    if drunk.turtle.ycor() > screen_height / 2:
+    if drunk == 1:
+        ycor = drunk1.get_yCor() + stepSize
+    elif drunk == 2:
+        ycor = drunk2.get_yCor() + stepSize
+    elif drunk == 3:
+        ycor = drunk3.get_yCor() + stepSize
+    if ycor > (screen_height / 2):
         return True
     else:
         return False
 
 def atBottomEdge(drunk, screen_height):
-    if drunk.turtle.ycor() < -screen_height / 2:
+    if drunk == 1:
+        ycor = drunk1.get_yCor() - stepSize
+    elif drunk == 2:
+        ycor = drunk2.get_yCor() - stepSize
+    elif drunk == 3:
+        ycor = drunk3.get_yCor() - stepSize
+    if ycor < -(screen_height / 2):
         return True
     else:
         return False
@@ -57,27 +88,49 @@ def atBottomEdge(drunk, screen_height):
 # Randomize directions
 # change to change direction, update with random direction based on instructions
 
-def change_position(drunk, stepSize,width,height):
+def change_position(drunk, stepSize ,width,height):
     DIRECTIONS = [0,45, 90, 135, 180, 225, 270, 315]
     if atLeftEdge(drunk,width):
-        DIRECTIONS.remove(225) 
-        DIRECTIONS.remove(270)
-        DIRECTIONS.remove(315)     
-    elif atRightEdge(drunk,width): 
-        DIRECTIONS.remove(0)
-        DIRECTIONS.remove(45)
-        DIRECTIONS.remove(90)
-    elif atBottomEdge(drunk,height): 
-        DIRECTIONS.remove(135)
+            DIRECTIONS.remove(225) 
+            DIRECTIONS.remove(270)
+            DIRECTIONS.remove(315)     
+    if atRightEdge(drunk,width): 
+            DIRECTIONS.remove(45)
+            DIRECTIONS.remove(90)
+            DIRECTIONS.remove(135)
+    if atBottomEdge(drunk,height): 
+        try:
+            DIRECTIONS.remove(135)
+        except:
+            pass
         DIRECTIONS.remove(180)
-        DIRECTIONS.remove(225)
-    elif atTopEdge(drunk,height):
-        DIRECTIONS.remove(0)
-        DIRECTIONS.remove(45)
-        DIRECTIONS.remove(315)
-
-    drunk.turtle.setheading(random.choice(DIRECTIONS))
-    drunk.turtle.forward(stepSize)
+        try:
+            DIRECTIONS.remove(225)
+        except:
+            pass
+    if atTopEdge(drunk,height):
+        try:
+            DIRECTIONS.remove(0)
+        except:
+            pass
+        try:
+            DIRECTIONS.remove(45)
+        except:
+            pass
+        try:
+            DIRECTIONS.remove(315)
+        except:
+            pass
+    print(DIRECTIONS)
+    if drunk == 1:
+        drunk1.turtle.setheading(random.choice(DIRECTIONS))
+        drunk1.turtle.forward(stepSize)
+    elif drunk == 2:
+        drunk2.turtle.setheading(random.choice(DIRECTIONS))
+        drunk2.turtle.forward(stepSize)
+    elif drunk == 3:
+        drunk3.turtle.setheading(random.choice(DIRECTIONS))
+        drunk3.turtle.forward(stepSize)
 
 
         
@@ -85,16 +138,12 @@ def change_position(drunk, stepSize,width,height):
 # Calculate Distance
 
 def distance(drunk):
-    dist = drunk.turtle.distance(drunk.get_startxcor(),drunk.get_startycor())
-    #x1 = drunk.get_startxcor
-    #x2 = drunk.turtle.xcor
-    #print(drunk.turtle.position)
-    #print(drunk.turtle.xcor)
-    #x = int(x1) - int(x2)
-    #y1 = drunk.get_startycor
-    #y2 = drunk.turtle.ycor
-    #y = int(y1) - int(y2)
-    #dist = math.sqrt(x**2 + y**2)    
+    if drunk == 1:
+        dist = drunk1.turtle.distance(drunk1.get_startxcor(),drunk1.get_startycor())   
+    elif drunk == 2:
+        dist = drunk2.turtle.distance(drunk2.get_startxcor(),drunk2.get_startycor())
+    elif drunk == 3:
+        dist = drunk3.turtle.distance(drunk3.get_startxcor(),drunk3.get_startycor())
     return dist
     
     
@@ -107,9 +156,12 @@ print('This program simulates drunkards walk in a turtle screen')
 print('for a specified number of steps.')
 
 # init screen size
-screen_width = 1000
-screen_height = 800
+screen_width = 600
+screen_height = 400
 turtle.setup(screen_width,screen_height)
+
+# Set angle orientation
+turtle.mode("logo")
 
 # create turtle window
 window = turtle.Screen()
@@ -119,7 +171,7 @@ window.title('Drunkards Walk')
 #change to number of moves
 num_steps = int(input('Enter number of steps to run: '))
 num_drunks = 3
-stepSize = 10
+stepSize = 40
 
 # create balls
 create = []
@@ -153,27 +205,28 @@ drunk3.set_startxcor(create[2])
 drunk3.turtle.sety(create[3])
 drunk3.set_startycor(create[3])
 
-# set start time
-#start_time = time.time()
-
 # begin simulation
 terminate = False
 
 #update with number of moves
 print(num_steps)
 for k in range(num_steps):
-    change_position(drunk1, stepSize,screen_width,screen_height)
-for k in range(num_steps):
-    change_position(drunk2, stepSize,screen_width,screen_height)
-for k in range(num_steps):
-    change_position(drunk3, stepSize,screen_width,screen_height)
+    drunk = 1
+    change_position(drunk, stepSize,screen_width,screen_height)
+    drunk = 2
+    change_position(drunk, stepSize,screen_width,screen_height)
+    drunk = 3
+    change_position(drunk, stepSize,screen_width,screen_height)
 
 # add equation for distance from start point
 #Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))
 
-print("In", num_steps, "steps Drunk 1 moves", distance(drunk1))
-print("In", num_steps, "steps Drunk 2 moves", distance(drunk2))
-print("In", num_steps, "steps Drunk 3 moves", distance(drunk3))
+drunk = 1
+print("In", num_steps, "steps Drunk 1 moves", distance(drunk), "pixels.")
+drunk = 2
+print("In", num_steps, "steps Drunk 2 moves", distance(drunk), "pixels.")
+drunk = 3
+print("In", num_steps, "steps Drunk 3 moves", distance(drunk), "pixels.")
 
 # exit on close window
 turtle.exitonclick()
