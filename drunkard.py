@@ -235,7 +235,8 @@ drunk = 3
 distanceView = distanceView + "In " + str(num_steps) + " steps Drunk 3 moves " + str(round(distance(drunk), 4)) + " pixels.\n Enter 0 to close"
 
 # Exit on no input
-if turtle.textinput("Distance", distanceView) == 0:
+close = int(turtle.textinput("Distance", distanceView))
+if close == 0:
     turtle.bye()
 
 # exit on close window
