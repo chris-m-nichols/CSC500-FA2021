@@ -169,7 +169,7 @@ window.title('Drunkards Walk')
 
 # prompt user for number of balls and steps
 #change to number of moves
-num_steps = int(input('Enter number of steps to run: '))
+num_steps = int(turtle.textinput('Enter number of steps to run: ', "Number of steps:"))
 num_drunks = 3
 stepSize = 40
 
@@ -228,11 +228,15 @@ for k in range(num_steps):
 #Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))
 
 drunk = 1
-print("In", num_steps, "steps Drunk 1 moves", distance(drunk), "pixels.")
+distanceView = "In " + str(num_steps) + " steps Drunk 1 moves " + str(round(distance(drunk), 4)) + " pixels.\n"
 drunk = 2
-print("In", num_steps, "steps Drunk 2 moves", distance(drunk), "pixels.")
+distanceView = distanceView + "In " + str(num_steps) + " steps Drunk 2 moves " + str(round(distance(drunk), 4)) + " pixels.\n"
 drunk = 3
-print("In", num_steps, "steps Drunk 3 moves", distance(drunk), "pixels.")
+distanceView = distanceView + "In " + str(num_steps) + " steps Drunk 3 moves " + str(round(distance(drunk), 4)) + " pixels.\n Enter 0 to close"
+
+# Exit on no input
+if turtle.textinput("Distance", distanceView) == 0:
+    turtle.bye()
 
 # exit on close window
 turtle.exitonclick()
