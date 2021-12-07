@@ -183,30 +183,36 @@ drunk1 = drunkard(create[0], create[1], create[2], create[3])
 drunk1.turtle.shape('circle')
 drunk1.turtle.fillcolor(create[0])
 drunk1.turtle.speed(create[1])
+turtle.penup()
 drunk1.turtle.setx(create[2])
 drunk1.set_startxcor(create[2])
 drunk1.turtle.sety(create[3])
 drunk1.set_startycor(create[3])
+turtle.pendown()
 
 create = createDrunks(screen_width, screen_height)
 drunk2 = drunkard(create[0], create[1], create[2], create[3])
 drunk2.turtle.shape('circle')
 drunk2.turtle.fillcolor(create[0])
 drunk2.turtle.speed(create[1])
+turtle.penup()
 drunk2.turtle.setx(create[2])
 drunk2.set_startxcor(create[2])
 drunk2.turtle.sety(create[3])
 drunk2.set_startycor(create[3])
+turtle.pendown()
 
 create = createDrunks(screen_width, screen_height)
 drunk3 = drunkard(create[0], create[1], create[2], create[3])
 drunk3.turtle.shape('circle')
 drunk3.turtle.fillcolor(create[0])
 drunk3.turtle.speed(create[1])
+turtle.penup
 drunk3.turtle.setx(create[2])
 drunk3.set_startxcor(create[2])
 drunk3.turtle.sety(create[3])
 drunk3.set_startycor(create[3])
+turtle.pendown
 
 # begin simulation
 terminate = False
